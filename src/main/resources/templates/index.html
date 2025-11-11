@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Journal</title>
+</head>
+<body>
+<h2>My Journal Entries</h2>
+<a href="/add">Add New Entry</a>
+<br><br>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th><th>Title</th><th>Content</th><th>Actions</th>
+    </tr>
+    <tr th:each="j : ${journals}">
+        <td th:text="${j.id}"></td>
+        <td th:text="${j.title}"></td>
+        <td th:text="${j.content}"></td>
+        <td>
+            <a th:href="@{'/edit/' + ${j.id}}">Edit</a> |
+            <a th:href="@{'/delete/' + ${j.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
